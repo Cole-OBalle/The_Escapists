@@ -112,7 +112,7 @@ public class The_Escapists extends JFrame implements Runnable {
         int x[] = {Window.getX(0), Window.getX(Window.getWidth2()), Window.getX(Window.getWidth2()), Window.getX(0), Window.getX(0)};
         int y[] = {Window.getY(0), Window.getY(0), Window.getY(Window.getHeight2()), Window.getY(Window.getHeight2()), Window.getY(0)};
 //fill border
-        g.setColor(Color.black);
+        g.setColor(Color.gray);
         g.fillPolygon(x, y, 4);
 // draw border
         g.setColor(Color.black);
@@ -148,22 +148,6 @@ public class The_Escapists extends JFrame implements Runnable {
                 if (Map.board[zrow][zcolumn] == Map.WALL)
                 {
                     g.setColor(Color.black);
-                    g.fillRect(Window.getX(0)+zcolumn*xdelta,
-                    Window.getY(0)+zrow*ydelta,
-                    xdelta,
-                    ydelta);
-                }
-                else if (Map.board[zrow][zcolumn] == Map.STAR)
-                {
-                    g.setColor(Color.gray);
-                    g.fillRect(Window.getX(0)+zcolumn*xdelta,
-                    Window.getY(0)+zrow*ydelta,
-                    xdelta,
-                    ydelta);
-                }
-                else if (Map.board[zrow][zcolumn] == Map._END)
-                {
-                    g.setColor(Color.gray);
                     g.fillRect(Window.getX(0)+zcolumn*xdelta,
                     Window.getY(0)+zrow*ydelta,
                     xdelta,
