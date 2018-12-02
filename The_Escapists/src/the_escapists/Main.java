@@ -14,12 +14,10 @@ public class Main {
         Map.draw(g, frame);
     }
 
-    public static void reset(){
+    
+    public static void reset(Player player){
         Character.reset();
         Map.reset();
-     }
-
-    public static void reset(Player player){
         player.reset();
     }
     public static void Animate(Player player){
