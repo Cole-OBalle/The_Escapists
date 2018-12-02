@@ -18,6 +18,7 @@ public class Character {
     private static int yLength;
     private static int x;
     private static int y;
+    protected String name;
     
     
     public static void reset(){

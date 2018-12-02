@@ -5,10 +5,11 @@
  */
 package the_escapists;
 
-/**
- *
- * @author cole0
- */
 public class Item {
     
+    private boolean contraBand;
+    
+    Item(boolean contraband){
+        
+    }
 }
