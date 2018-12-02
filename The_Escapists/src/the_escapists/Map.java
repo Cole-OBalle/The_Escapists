@@ -52,7 +52,8 @@ public class Map {
         {
             for (int zcolumn=0;zcolumn<numColumns;zcolumn++)
             {
-                if (Map.board[zrow][zcolumn] == Map.WALL)
+                if (Map.board[zrow][zcolumn] == 
+                        WALL)
                 {
                     g.drawImage(Wall_Block,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
                 }

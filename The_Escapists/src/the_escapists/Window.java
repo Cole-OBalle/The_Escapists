@@ -4,11 +4,11 @@ package the_escapists;
 
 public class Window {
     static final int XBORDER = 0;
-    static final int TOP_BORDER = 80;
-    static final int BOTTOM_BORDER = 8;
+    static final int TOP_BORDER = 0;
+    static final int BOTTOM_BORDER = 0;
     
     static final int YTITLE = 30;
-    static final int WINDOW_BORDER = 8;
+    static final int WINDOW_BORDER = 0;
     static final int WINDOW_WIDTH = 1000;
     static final int WINDOW_HEIGHT = 1000;
     static int xsize = -1;
