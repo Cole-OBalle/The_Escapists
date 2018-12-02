@@ -27,6 +27,7 @@ public class The_Escapists extends JFrame implements Runnable {
     static int camY; 
     int xpos;
     int ypos;
+    int value = 1;
     
     Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
 
@@ -91,16 +92,20 @@ public class The_Escapists extends JFrame implements Runnable {
             public void keyPressed(KeyEvent e) {
 
                if (e.VK_W == e.getKeyCode()) {
-                    player.changeY(-5);
+                   value = 1;
+                    player.changeY(-10);
                 }
-                if (e.VK_S== e.getKeyCode()) {
-                    player.changeY(5);
+               else if (e.VK_S== e.getKeyCode()) {
+                   value =2;
+                    player.changeY(10);
                 }
-                if (e.VK_A ==e.getKeyCode()) {
-                    player.changeX(-5);
+               else if (e.VK_A ==e.getKeyCode()) {
+                   value = 3;
+                    player.changeX(-10);
                 }
-                if (e.VK_D== e.getKeyCode()) {
-                    player.changeX(5);
+               else if (e.VK_D== e.getKeyCode()) {
+                   value = 4;
+                    player.changeX(10);
                 }
                 if(e.getKeyCode() != e.VK_S && e.getKeyCode() != e.VK_W){
                     player.changeY(0);
@@ -183,10 +188,19 @@ public class The_Escapists extends JFrame implements Runnable {
 //                    Window.getY(0)+zrow*ydelta,
 //                    xdelta,
 //                    ydelta);
-                }
+                } 
             }
         }
-        Main.Draw(g,this,player);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Main.Draw(g,this,player,value);
         gOld.drawImage(image, 0, 0, null);
     }
 

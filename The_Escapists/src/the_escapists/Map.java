@@ -15,7 +15,9 @@ public class Map {
     static private Image Wall_Block2;
     static private Image Wall_Block3;
     static private Image Wall_Block_Sideway;
+    static private Image StoneImage;
     static private Image GrassBlock;
+    static private Image DoorBlock;
     static final int numRows = 17;
     static final int numColumns = 11;
 //Possible values for the board.
@@ -23,25 +25,28 @@ public class Map {
     static final int WALL = 1;
     static final int VOID = 2;
     static final int END = 3;
+    static final int PATH = 4;
+    static final int STONE = 5;
+    static final int DOOR = 6;
 
     static int board[][] = {
-   {WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL},     
-   {WALL,VOID,VOID,VOID,VOID,VOID,VOID,VOID,VOID,VOID,WALL},
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL},  
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL},
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL}, 
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL},
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL},  
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL}, 
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL}, 
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL},
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL}, 
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL},
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL},  
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL}, 
-   {WALL,VOID,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,VOID,WALL}, 
-   {WALL,VOID,VOID,VOID,VOID,VOID,VOID,VOID,VOID,VOID,WALL},
-   {WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL}
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},     
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},  
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},  
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
+   {GRASS,GRASS,GRASS,GRASS,STONE,STONE,GRASS,GRASS,GRASS,GRASS,GRASS},
+   {GRASS,GRASS,GRASS,GRASS,STONE,STONE,GRASS,GRASS,GRASS,GRASS,GRASS}, 
+   {GRASS,GRASS,GRASS,GRASS,DOOR,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},  
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}
    }; 
     
     
@@ -55,6 +60,8 @@ public class Map {
          Wall_Block3 = Toolkit.getDefaultToolkit().getImage("./Wall_Block3.png");
          Wall_Block_Sideway = Toolkit.getDefaultToolkit().getImage("./Wall_Block_SideWay.png");
          GrassBlock =  Toolkit.getDefaultToolkit().getImage("./needGrassFixed.jpg");
+         StoneImage =  Toolkit.getDefaultToolkit().getImage("./Stone.png");
+         DoorBlock =  Toolkit.getDefaultToolkit().getImage("./Door.png");
     }
     
     public static void draw(Graphics2D g,The_Escapists frame){
@@ -81,11 +88,20 @@ public class Map {
                 else if(board[zrow][zcolumn] == GRASS){
                     g.drawImage(GrassBlock,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
                 }
+                 else if(board[zrow][zcolumn] == PATH){
+                    g.drawImage(StoneImage,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
+                }
+                 else if(board[zrow][zcolumn] == STONE){
+                    g.drawImage(StoneImage,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
+                }
+                 else if(board[zrow][zcolumn] == DOOR){
+                    g.drawImage(DoorBlock,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
+                }
             }
         }
     }
     
-} 
+}
   
 
 
