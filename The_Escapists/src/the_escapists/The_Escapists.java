@@ -13,6 +13,8 @@ public class The_Escapists extends JFrame implements Runnable {
    
     Image image;
     Graphics2D g;
+    int xPos;
+    int yPos;
     
     static The_Escapists frame;
     public static void main(String[] args) {
@@ -29,9 +31,7 @@ public class The_Escapists extends JFrame implements Runnable {
                     //left button
 
 // location of the cursor.
-                    int xpos = e.getX();
-                    int ypos = e.getY();
-
+                   
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
