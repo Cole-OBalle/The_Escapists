@@ -26,7 +26,7 @@ public class Character {
     }
     
     public static void draw(Graphics2D g,The_Escapists frame){
-        g.drawImage(Character_Image,x,y,xLength,yLength,frame);
+        //g.drawImage(Character_Image,x,y,xLength,yLength,frame);
     }
     
 }

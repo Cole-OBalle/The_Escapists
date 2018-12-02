@@ -213,21 +213,7 @@ public class The_Escapists extends JFrame implements Runnable {
             Window.getX(0)+zi*Window.getWidth2()/Map.numColumns,Window.getY(Window.getHeight2())  );
         }
         
-//Display the objects of the board
-    int ydelta = Window.getHeight2()/Map.numRows;
-    int xdelta = Window.getWidth2()/Map.numColumns;
-        for (int zrow=0;zrow<Map.numRows;zrow++)
-        {
-            for (int zcolumn=0;zcolumn<Map.numColumns;zcolumn++)
-            {
-                if (Map.board[zrow][zcolumn] == Map.WALL)
-                {
-                   
-                }
-            }
-        }
- 
-       
+        
         Main.draw(g,frame);
         
         gOld.drawImage(image, 0, 0, null);

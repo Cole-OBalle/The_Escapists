@@ -8,9 +8,9 @@ package the_escapists;
 import java.awt.*;
 
 public class Map {
-    static int ydelta = Window.getHeight2()/Map.numRows;
-    static int xdelta = Window.getWidth2()/Map.numColumns;
-    static private Image Wall_Block = Toolkit.getDefaultToolkit().getImage("./Wall_Block.png");
+    static int ydelta;
+    static int xdelta;
+    static private Image Wall_Block;
     static final int numRows = 17;
     static final int numColumns = 11;
 //Possible values for the board.
@@ -43,6 +43,7 @@ public class Map {
     public static void reset(){
          ydelta = Window.getHeight2()/numRows;
          xdelta = Window.getWidth2()/numColumns;
+         Wall_Block = Toolkit.getDefaultToolkit().getImage("./Wall_Block.png");
     }
     
     public static void draw(Graphics2D g,The_Escapists frame){
