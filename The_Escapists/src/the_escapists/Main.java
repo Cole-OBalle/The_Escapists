@@ -13,12 +13,12 @@ public class Main {
         player.Draw(g, frame,50,100);
         Map.draw(g, frame);
     }
-<<<<<<< HEAD
+
     public static void reset(){
         Character.reset();
         Map.reset();
      }
-=======
+
     public static void reset(Player player){
         player.reset();
     }
@@ -29,7 +29,7 @@ public class Main {
 //        Character.reset();
 //        Map.reset();
 //     }
->>>>>>> Cole
+
     
 }
 

@@ -14,9 +14,9 @@ public class Player extends Character {
     public void animate(){
         Move();
     }
-    public void reset(){
-        
-    }
+//    public void reset(){
+//        
+//    }
     public void changeX(int dir){
         xPos += dir;
     }

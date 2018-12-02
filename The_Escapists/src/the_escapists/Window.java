@@ -11,6 +11,8 @@ public class Window {
     static final int WINDOW_BORDER = 0;
     static final int WINDOW_WIDTH = 1000;
     static final int WINDOW_HEIGHT = 1000;
+    static final int WORLD_WIDTH = 10000;
+    static final int WORLD_HEIGHT = 5000;
     static int xsize = -1;
     static int ysize = -1;
 
