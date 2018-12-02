@@ -13,6 +13,12 @@ public class Main {
         player.Draw(g, frame,50,100);
         Map.draw(g, frame);
     }
+    public static void reset(Player player){
+        player.reset();
+    }
+    public static void Animate(Player player){
+        player.animate();
+    }
 //    public static void reset(){
 //        Character.reset();
 //        Map.reset();

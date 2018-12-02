@@ -11,4 +11,17 @@ public class Player extends Character {
         xPos = Window.getX(0);
         yPos = Window.getY(0);
     }
+    public void animate(){
+        Move();
+    }
+    public void reset(){
+        
+    }
+    public void changeX(int dir){
+        xPos += dir;
+    }
+    public void changeY(int dir){
+        yPos += dir;
+    }
+    
 }
