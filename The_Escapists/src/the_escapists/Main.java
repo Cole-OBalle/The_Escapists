@@ -10,14 +10,14 @@ import javax.swing.*;
 public class Main {
     
     public static void Draw(Graphics2D g,The_Escapists frame,Player player){
+         Map.draw(g, frame);
         player.Draw(g, frame,50,100);
-        Map.draw(g, frame);
     }
 
     
     public static void reset(Player player){
-        Character.reset();
         Map.reset();
+        Character.reset();
         player.reset();
     }
     public static void Animate(Player player){
