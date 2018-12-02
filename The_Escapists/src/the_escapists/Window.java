@@ -11,11 +11,15 @@ public class Window {
     static final int WINDOW_BORDER = 0;
     static final int WINDOW_WIDTH = 1000;
     static final int WINDOW_HEIGHT = 1000;
-    static final int WORLD_WIDTH = 10000;
-    static final int WORLD_HEIGHT = 5000;
+    static final int WORLD_SIZE_X = 10000;
+    static final int WORLD_SIZE_Y = 5000;
     static int xsize = -1;
     static int ysize = -1;
-
+    static int offsetMaxX = WORLD_SIZE_X - WINDOW_WIDTH;
+    static int offsetMaxY = WORLD_SIZE_Y - WINDOW_HEIGHT;
+    static int offsetMinX = 0;
+    static int offsetMinY = 0;
+    
 
 /////////////////////////////////////////////////////////////////////////
     public static int getX(int x) {

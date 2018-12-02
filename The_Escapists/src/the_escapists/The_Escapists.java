@@ -23,6 +23,11 @@ public class The_Escapists extends JFrame implements Runnable {
     Image image;
     Graphics2D g;
     
+    static int camX;
+    static int camY; 
+    int xpos;
+    int ypos;
+    
     Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
 
     static The_Escapists frame;
@@ -42,9 +47,23 @@ public class The_Escapists extends JFrame implements Runnable {
                     //left button
 
 // location of the cursor.
-                    int xpos = e.getX();
-                    int ypos = e.getY();                                        
-                
+                    xpos = e.getX();
+                    ypos = e.getY();                                        
+                    camX = xpos - Window.WINDOW_WIDTH / 2;
+                    camY = ypos - Window.WINDOW_HEIGHT / 2;
+                    
+                    
+                    
+                    
+                    if (camX > Window.offsetMaxX)
+                        camX = Window.offsetMaxX;
+                    else if (camX < Window.offsetMinX)
+                        camX = Window.offsetMinX;
+                    if (camY > Window.offsetMaxY)
+                        camY = Window.offsetMaxY;
+                    else if (camY < Window.offsetMinY)
+                        camY = Window.offsetMinY;
+                    
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
@@ -72,9 +91,13 @@ public class The_Escapists extends JFrame implements Runnable {
             public void keyPressed(KeyEvent e) {
 
                 if (e.VK_UP == e.getKeyCode()) {
+                    
                 } else if (e.VK_DOWN == e.getKeyCode()) {
+                    
                 } else if (e.VK_LEFT == e.getKeyCode()) {
+                    
                 } else if (e.VK_RIGHT == e.getKeyCode()) {
+                    
                 }
                 
                 repaint();
