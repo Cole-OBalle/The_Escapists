@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package the_escapists;
-import java.awt.Image;
-public class Player extends Character {
-    Player(Image _image){
-        image = _image;
-        xPos = Window.getX(0);
-        yPos = Window.getY(0);
+import java.awt.Graphics2D;
+public class Main {
+    public static void Draw(Graphics2D g, Player player, The_Escapists frame){
+            player.Draw(g,frame,50,100);
     }
 }

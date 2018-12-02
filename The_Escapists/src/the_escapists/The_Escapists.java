@@ -25,6 +25,8 @@ public class The_Escapists extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
+    
+    Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
 
     static The_Escapists frame;
     public static void main(String[] args) {
@@ -155,6 +157,7 @@ public class The_Escapists extends JFrame implements Runnable {
                 }
             }
         }
+        Main.Draw(g,player,this);
         gOld.drawImage(image, 0, 0, null);
     }
 
