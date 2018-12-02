@@ -96,7 +96,7 @@ public class The_Escapists extends JFrame implements Runnable {
                     player.changeY(-10);
                 }
                else if (e.VK_S== e.getKeyCode()) {
-                   value =2;
+                   value = 2;
                     player.changeY(10);
                 }
                else if (e.VK_A ==e.getKeyCode()) {
