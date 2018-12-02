@@ -178,11 +178,11 @@ public class The_Escapists extends JFrame implements Runnable {
             {
                 if (Map.board[zrow][zcolumn] == Map.WALL)
                 {
-                    g.setColor(Color.black);
-                    g.fillRect(Window.getX(0)+zcolumn*xdelta,
-                    Window.getY(0)+zrow*ydelta,
-                    xdelta,
-                    ydelta);
+//                    g.setColor(Color.black);
+//                    g.fillRect(Window.getX(0)+zcolumn*xdelta,
+//                    Window.getY(0)+zrow*ydelta,
+//                    xdelta,
+//                    ydelta);
                 }
             }
         }

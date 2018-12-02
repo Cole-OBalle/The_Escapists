@@ -15,6 +15,7 @@ public class Map {
     static private Image Wall_Block2;
     static private Image Wall_Block3;
     static private Image Wall_Block_Sideway;
+    static private Image GrassBlock;
     static final int numRows = 17;
     static final int numColumns = 11;
 //Possible values for the board.
@@ -53,6 +54,7 @@ public class Map {
          Wall_Block2 = Toolkit.getDefaultToolkit().getImage("./Wall_Block2.png");
          Wall_Block3 = Toolkit.getDefaultToolkit().getImage("./Wall_Block3.png");
          Wall_Block_Sideway = Toolkit.getDefaultToolkit().getImage("./Wall_Block_SideWay.png");
+         GrassBlock =  Toolkit.getDefaultToolkit().getImage("./needGrassFixed.jpg");
     }
     
     public static void draw(Graphics2D g,The_Escapists frame){
@@ -75,6 +77,9 @@ public class Map {
                 else if(board[zrow][zcolumn] == VOID){
                     g.setColor(Color.black);
                     g.fillRect(Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta);
+                }
+                else if(board[zrow][zcolumn] == GRASS){
+                    g.drawImage(GrassBlock,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
                 }
             }
         }
