@@ -1,11 +1,12 @@
 
 package the_escapists;
-<<<<<<< HEAD
 import java.awt.Image;
 import java.awt.Graphics2D;
-=======
-
->>>>>>> 018c746df99eefe268844f60bf12b1f7b5bd584b
+import java.io.*; 
+import java.awt.*;
+import java.awt.geom.*;
+import java.awt.event.*;
+import javax.swing.*;
 public class Character {
     protected int xPos;
     protected int yPos;
@@ -19,4 +20,5 @@ public class Character {
     public void Draw(Graphics2D g, The_Escapists frame, int width, int height){
         g.drawImage(image, xPos, yPos, width, height, frame);
     }
+
 }

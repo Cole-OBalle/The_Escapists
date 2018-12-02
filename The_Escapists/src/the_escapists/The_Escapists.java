@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package the_escapists;
 
 import java.awt.Color;
@@ -157,7 +153,7 @@ public class The_Escapists extends JFrame implements Runnable {
                 }
             }
         }
-        Main.Draw(g,player,this);
+        Main.Draw(g,this,player);
         gOld.drawImage(image, 0, 0, null);
     }
 

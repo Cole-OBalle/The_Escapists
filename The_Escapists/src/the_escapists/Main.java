@@ -1,12 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package the_escapists;
-import java.awt.Graphics2D;
+
+import java.io.*; 
+import java.awt.*;
+import java.awt.geom.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 public class Main {
-    public static void Draw(Graphics2D g, Player player, The_Escapists frame){
-            player.Draw(g,frame,50,100);
+    
+    public static void Draw(Graphics2D g,The_Escapists frame,Player player){
+        player.Draw(g, frame,50,100);
+        Map.draw(g, frame);
     }
+//    public static void reset(){
+//        Character.reset();
+//        Map.reset();
+//     }
+    
 }
+
