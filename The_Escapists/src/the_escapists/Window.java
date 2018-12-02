@@ -6,7 +6,7 @@ public class Window {
     static final int XBORDER = 0;
     static final int TOP_BORDER = 0;
     static final int BOTTOM_BORDER = 0;
-    
+
     static final int YTITLE = 30;
     static final int WINDOW_BORDER = 0;
     static final int WINDOW_WIDTH = 1000;

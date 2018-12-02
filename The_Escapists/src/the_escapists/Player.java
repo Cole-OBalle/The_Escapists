@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package the_escapists;
-
-/**
- *
- * @author cole0
- */
+import java.awt.Image;
 public class Player extends Character {
-    
+    Player(Image _image){
+        image = _image;
+        xPos = Window.getX(0);
+        yPos = Window.getY(0);
+    }
 }

@@ -1,33 +1,27 @@
 
 package the_escapists;
-
-
+import java.awt.Image;
+import java.awt.Graphics2D;
 import java.io.*; 
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-
 public class Character {
-    private static Image Character_Image = Toolkit.getDefaultToolkit().getImage("./Character.png");
-    private static int xLength;
-    private static int yLength;
-    private static int x;
-    private static int y;
-    protected String name;
-    
-    
+    protected int xPos;
+    protected int yPos;
+    protected Image image;
+    Character(){
+        
+    }
+    public void Move(){
+        
+    }
+    public void Draw(Graphics2D g, The_Escapists frame, int width, int height){
+        g.drawImage(image, xPos, yPos, width, height, frame);
+    }
     public static void reset(){
-        xLength = 100;
-        yLength = 100;
-        x=xLength/2;
-        y=yLength/2;
+        
     }
-    
-    public static void draw(Graphics2D g,The_Escapists frame){
-        //g.drawImage(Character_Image,x,y,xLength,yLength,frame);
-    }
-    
-}
 
+}

@@ -9,8 +9,8 @@ import javax.swing.*;
 
 public class Main {
     
-    public static void draw(Graphics2D g,The_Escapists frame){
-        Character.draw(g, frame);
+    public static void Draw(Graphics2D g,The_Escapists frame,Player player){
+        player.Draw(g, frame,50,100);
         Map.draw(g, frame);
     }
     public static void reset(){
@@ -19,5 +19,4 @@ public class Main {
      }
     
 }
-
 

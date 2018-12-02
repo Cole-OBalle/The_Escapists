@@ -1,21 +1,29 @@
 
 package the_escapists;
 
-import java.io.*; 
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import javax.swing.JFrame;
+import java.io.File;
+import java.util.ArrayList;
 
 public class The_Escapists extends JFrame implements Runnable {
-
     boolean animateFirstTime = true;
-   
     Image image;
     Graphics2D g;
-    int xPos;
-    int yPos;
-    static private Image Wall_Block = Toolkit.getDefaultToolkit().getImage("./Wall_Block.png");
+    
+    Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
+
     static The_Escapists frame;
     public static void main(String[] args) {
         frame = new The_Escapists();
@@ -25,13 +33,17 @@ public class The_Escapists extends JFrame implements Runnable {
     }
 
     public The_Escapists() {
-        addMouseListener(new MouseAdapter() {
+        
+        addMouseListener(new MouseAdapter() {            
             public void mousePressed(MouseEvent e) {
+                
                 if (e.BUTTON1 == e.getButton()) {
                     //left button
 
 // location of the cursor.
-                   
+                    int xpos = e.getX();
+                    int ypos = e.getY();                                        
+                
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
@@ -56,114 +68,13 @@ public class The_Escapists extends JFrame implements Runnable {
 
         addKeyListener(new KeyAdapter() {
 
-        
             public void keyPressed(KeyEvent e) {
-              
-                if (e.VK_W == e.getKeyCode()) {
-              
-                    
-                }else if (e.VK_S == e.getKeyCode()) {
-                 
-                   
-                } else if (e.VK_A == e.getKeyCode()) {
 
-                   
-                } else if (e.VK_D == e.getKeyCode()) {
-
-                }
-                 else if (e.VK_SPACE == e.getKeyCode()) {
-                    //
-                }
-                 else if (e.VK_Q == e.getKeyCode()) {
-                   
-                } else if (e.VK_UP == e.getKeyCode()) {
-                   
-                } else if (e.VK_E == e.getKeyCode()) {
-                   
-                }
-                 else if (e.VK_R == e.getKeyCode()) {
-                    //
-                 }else if (e.VK_T == e.getKeyCode()) {
-                   
-                } else if (e.VK_Y == e.getKeyCode()) {
-                   
-                } else if (e.VK_U == e.getKeyCode()) {
-                   
-                }
-                 else if (e.VK_I == e.getKeyCode()) {
-                    //
-                } else if (e.VK_O == e.getKeyCode()) {
-                   
-                } else if (e.VK_P == e.getKeyCode()) {
-                   
+                if (e.VK_UP == e.getKeyCode()) {
+                } else if (e.VK_DOWN == e.getKeyCode()) {
                 } else if (e.VK_LEFT == e.getKeyCode()) {
-                   
-                }
-                 else if (e.VK_DOWN == e.getKeyCode()) {
-                    //
                 } else if (e.VK_RIGHT == e.getKeyCode()) {
-                   
-                } else if (e.VK_F == e.getKeyCode()) {
-                   
-                } else if (e.VK_G == e.getKeyCode()) {
-                   
                 }
-                 else if (e.VK_H == e.getKeyCode()) {
-                    //
-                } else if (e.VK_J == e.getKeyCode()) {
-                   
-                } else if (e.VK_K == e.getKeyCode()) {
-                   
-                } else if (e.VK_L == e.getKeyCode()) {
-                   
-                }
-                 else if (e.VK_Z == e.getKeyCode()) {
-                    //
-                } else if (e.VK_X == e.getKeyCode()) {
-                   
-                } else if (e.VK_C == e.getKeyCode()) {
-                   
-                } else if (e.VK_V == e.getKeyCode()) {
-                   
-                }
-                 else if (e.VK_B == e.getKeyCode()) {
-                    //
-                }
-                else if (e.VK_S == e.getKeyCode()) {
-                    //
-                } else if (e.VK_D == e.getKeyCode()) {
-                   
-                } else if (e.VK_F == e.getKeyCode()) {
-                   
-                } else if (e.VK_G == e.getKeyCode()) {
-                   
-                }
-                 else if (e.VK_H == e.getKeyCode()) {
-                    //
-                } else if (e.VK_J == e.getKeyCode()) {
-                   
-                } else if (e.VK_K == e.getKeyCode()) {
-                   
-                } else if (e.VK_L == e.getKeyCode()) {
-                   
-                }
-                 else if (e.VK_Z == e.getKeyCode()) {
-                    //
-                } else if (e.VK_X == e.getKeyCode()) {
-                   
-                } else if (e.VK_C == e.getKeyCode()) {
-                   
-                } else if (e.VK_V == e.getKeyCode()) {
-                   
-                }
-                 else if (e.VK_B == e.getKeyCode()) {
-                    //
-                }else if (e.VK_N == e.getKeyCode()) {
-                    //
-                } else if (e.VK_M == e.getKeyCode()) {
-                   
-                } 
-                
                 
                 repaint();
             }
@@ -193,12 +104,24 @@ public class The_Escapists extends JFrame implements Runnable {
                     RenderingHints.VALUE_ANTIALIAS_ON);
         }
 //fill background
-        
+        g.setColor(Color.gray);
+        g.fillRect(0, 0, Window.xsize, Window.ysize);
+
+        int x[] = {Window.getX(0), Window.getX(Window.getWidth2()), Window.getX(Window.getWidth2()), Window.getX(0), Window.getX(0)};
+        int y[] = {Window.getY(0), Window.getY(0), Window.getY(Window.getHeight2()), Window.getY(Window.getHeight2()), Window.getY(0)};
+//fill border
+        g.setColor(Color.gray);
+        g.fillPolygon(x, y, 4);
+// draw border
+        g.setColor(Color.black);
+        g.drawPolyline(x, y, 5);
+
         if (animateFirstTime) {
             gOld.drawImage(image, 0, 0, null);
             return;
         }
 
+        
         g.setColor(Color.gray);
 //horizontal lines
         for (int zi=1;zi<Map.numRows;zi++)
@@ -213,9 +136,24 @@ public class The_Escapists extends JFrame implements Runnable {
             Window.getX(0)+zi*Window.getWidth2()/Map.numColumns,Window.getY(Window.getHeight2())  );
         }
         
-        
-        Main.draw(g,frame);
-        
+//Display the objects of the board
+    int ydelta = Window.getHeight2()/Map.numRows;
+    int xdelta = Window.getWidth2()/Map.numColumns;
+        for (int zrow=0;zrow<Map.numRows;zrow++)
+        {
+            for (int zcolumn=0;zcolumn<Map.numColumns;zcolumn++)
+            {
+                if (Map.board[zrow][zcolumn] == Map.WALL)
+                {
+                    g.setColor(Color.black);
+                    g.fillRect(Window.getX(0)+zcolumn*xdelta,
+                    Window.getY(0)+zrow*ydelta,
+                    xdelta,
+                    ydelta);
+                }
+            }
+        }
+        Main.Draw(g,this,player);
         gOld.drawImage(image, 0, 0, null);
     }
 
@@ -225,7 +163,7 @@ public class The_Escapists extends JFrame implements Runnable {
         while (true) {
             animate();
             repaint();
-            double seconds = .02;    //time that 1 frame takes.
+            double seconds = .05;    //time that 1 frame takes.
             int miliseconds = (int) (1000.0 * seconds);
             try {
                 Thread.sleep(miliseconds);
@@ -236,7 +174,6 @@ public class The_Escapists extends JFrame implements Runnable {
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
         Main.reset();
-
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
@@ -246,16 +183,8 @@ public class The_Escapists extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
-         
             reset();
-
         }
-       
-        
-        
-        
-        
-        
     }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -272,7 +201,4 @@ public class The_Escapists extends JFrame implements Runnable {
         }
         relaxer = null;
     }
-
-
-/////////////////////////////////////////////////////////////////////////
 }
