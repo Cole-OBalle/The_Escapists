@@ -5,6 +5,7 @@
  */
 package the_escapists;
 
+
 import java.io.*; 
 import java.awt.*;
 import java.awt.geom.*;
@@ -31,5 +32,4 @@ public class Character {
     }
     
 }
-
 

@@ -1,3 +1,4 @@
+
 package the_escapists;
 
 import java.io.*; 
@@ -198,6 +199,37 @@ public class The_Escapists extends JFrame implements Runnable {
             return;
         }
 
+        g.setColor(Color.gray);
+//horizontal lines
+        for (int zi=1;zi<Map.numRows;zi++)
+        {
+            g.drawLine(Window.getX(0) ,Window.getY(0)+zi*Window.getHeight2()/Map.numRows ,
+            Window.getX(Window.getWidth2()) ,Window.getY(0)+zi*Window.getHeight2()/Map.numRows );
+        }
+//vertical lines
+        for (int zi=1;zi<Map.numColumns;zi++)
+        {
+            g.drawLine(Window.getX(0)+zi*Window.getWidth2()/Map.numColumns ,Window.getY(0) ,
+            Window.getX(0)+zi*Window.getWidth2()/Map.numColumns,Window.getY(Window.getHeight2())  );
+        }
+        
+//Display the objects of the board
+    int ydelta = Window.getHeight2()/Map.numRows;
+    int xdelta = Window.getWidth2()/Map.numColumns;
+        for (int zrow=0;zrow<Map.numRows;zrow++)
+        {
+            for (int zcolumn=0;zcolumn<Map.numColumns;zcolumn++)
+            {
+                if (Map.board[zrow][zcolumn] == Map.WALL)
+                {
+                    g.setColor(Color.black);
+                    g.fillRect(Window.getX(0)+zcolumn*xdelta,
+                    Window.getY(0)+zrow*ydelta,
+                    xdelta,
+                    ydelta);
+                }
+            }
+        }
  
        
         Main.draw(g,frame);
