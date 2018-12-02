@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Character {
     protected int xPos;
     protected int yPos;
-    protected Image image;
+    protected static Image image;
     Character(){
         
     }
@@ -21,7 +21,7 @@ public class Character {
         g.drawImage(image, xPos, yPos, width, height, frame);
     }
     public static void reset(){
-        
+        image = Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"); 
     }
 
 }

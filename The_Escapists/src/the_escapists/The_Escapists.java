@@ -90,14 +90,23 @@ public class The_Escapists extends JFrame implements Runnable {
 
             public void keyPressed(KeyEvent e) {
 
-                if (e.VK_UP == e.getKeyCode()) {
-                    
-                } else if (e.VK_DOWN == e.getKeyCode()) {
-                    
-                } else if (e.VK_LEFT == e.getKeyCode()) {
-                    
-                } else if (e.VK_RIGHT == e.getKeyCode()) {
-                    
+               if (e.VK_W == e.getKeyCode()) {
+                    player.changeY(-5);
+                }
+                if (e.VK_S== e.getKeyCode()) {
+                    player.changeY(5);
+                }
+                if (e.VK_A ==e.getKeyCode()) {
+                    player.changeX(-5);
+                }
+                if (e.VK_D== e.getKeyCode()) {
+                    player.changeX(5);
+                }
+                if(e.getKeyCode() != e.VK_S && e.getKeyCode() != e.VK_W){
+                    player.changeY(0);
+                }
+                if(e.getKeyCode() != e.VK_D && e.getKeyCode() != e.VK_A){
+                    player.changeX(0);
                 }
                 
                 repaint();
