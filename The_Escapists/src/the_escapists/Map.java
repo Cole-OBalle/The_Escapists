@@ -5,38 +5,60 @@
  */
 package the_escapists;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
 
 public class Map {
-    
+    static int ydelta = Window.getHeight2()/Map.numRows;
+    static int xdelta = Window.getWidth2()/Map.numColumns;
+    static private Image Wall_Block = Toolkit.getDefaultToolkit().getImage("./Wall_Block.png");
     static final int numRows = 17;
     static final int numColumns = 11;
 //Possible values for the board.
-    static final int PATH = 0;
+    static final int GRASS = 0;
     static final int WALL = 1;
     static final int STAR = 2;
     static final int _END = 3;
 
     static int board[][] = {
    {WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL},     
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},  
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL}, 
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},  
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL}, 
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL}, 
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL}, 
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},  
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL}, 
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL}, 
-   {WALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,PATH,WALL},
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},  
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL}, 
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},  
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL}, 
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL}, 
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL}, 
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},  
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL}, 
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL}, 
+   {WALL,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL},
    {WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL}
    }; 
+    
+    
+    public static void reset(){
+         ydelta = Window.getHeight2()/numRows;
+         xdelta = Window.getWidth2()/numColumns;
+    }
+    
+    public static void draw(Graphics2D g,The_Escapists frame){
+        
+       for (int zrow=0;zrow<numRows;zrow++)
+        {
+            for (int zcolumn=0;zcolumn<numColumns;zcolumn++)
+            {
+                if (Map.board[zrow][zcolumn] == Map.WALL)
+                {
+                    g.drawImage(Wall_Block,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
+                }
+            }
+        }
+    }
+    
 } 
   
 

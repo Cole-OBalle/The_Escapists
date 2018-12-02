@@ -15,7 +15,7 @@ public class The_Escapists extends JFrame implements Runnable {
     Graphics2D g;
     int xPos;
     int yPos;
-    
+    static private Image Wall_Block = Toolkit.getDefaultToolkit().getImage("./Wall_Block.png");
     static The_Escapists frame;
     public static void main(String[] args) {
         frame = new The_Escapists();
@@ -222,11 +222,7 @@ public class The_Escapists extends JFrame implements Runnable {
             {
                 if (Map.board[zrow][zcolumn] == Map.WALL)
                 {
-                    g.setColor(Color.black);
-                    g.fillRect(Window.getX(0)+zcolumn*xdelta,
-                    Window.getY(0)+zrow*ydelta,
-                    xdelta,
-                    ydelta);
+                   
                 }
             }
         }
