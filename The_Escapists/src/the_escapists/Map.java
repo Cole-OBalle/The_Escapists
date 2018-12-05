@@ -59,7 +59,7 @@ public class Map {
          DoorBlock =  Toolkit.getDefaultToolkit().getImage("./Door.png");
     }
     
-    public static void draw(Graphics2D g,The_Escapists frame){
+    public static void draw(Graphics2D g,Camera frame){
         
        for (int zrow=0;zrow<numRows;zrow++)
         {

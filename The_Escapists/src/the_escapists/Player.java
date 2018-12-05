@@ -27,7 +27,7 @@
         Move();
     }
 
-    public void CharacterDir(int value,Graphics2D g,The_Escapists frame){
+    public void CharacterDir(int value,Graphics2D g,Camera frame){
         switch(value){
         case 1: {
                 g.drawImage(FrontImage,xPos,yPos,50,100,frame);

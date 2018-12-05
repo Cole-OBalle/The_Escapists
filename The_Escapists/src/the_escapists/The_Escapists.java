@@ -42,10 +42,16 @@ public class The_Escapists extends JFrame implements Runnable {
 
     static The_Escapists frame;
     public static void main(String[] args) {
-        frame = new The_Escapists();
-        frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        JFrame f = new JFrame("The_Escapists");
+    Camera cam = new Camera(0, 0, 800, 800);
+    f.add(cam);
+    f.setSize(cam.getWidth(), cam.getHeight());    
+    f.setVisible(true);
+    f.setResizable(false);
+    f.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE ); 
+    Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+    f.setLocation( (screensize.width - f.getWidth())/2,
+         (screensize.height - f.getHeight())/2-100 );
     }
 
     public The_Escapists() {
@@ -174,39 +180,9 @@ public class The_Escapists extends JFrame implements Runnable {
         
         
         
-        //cam is 500 x 500
-        g.setColor(Color.gray);
-        g.fillRect(camX, camY, camW, camH);     
+     
 
-        //draw sprite at JPanel location if in camera sight
-        if (((sprite.getX()-camX) >= camX) && ((sprite.getX()-camX) <= (camX+camW)) && ((sprite.getY()-camY) >= camY) && ((sprite.getY()-camY) <= (camY+camH))) {
-            g.setColor(Color.green);
-            g.fillRect(sprite.getX()-camX, sprite.getY()-camY, 20, 20); 
-
-            //Cam Sprite Location
-            g.setColor(Color.white);
-            g.drawString("Camera Sprite Location: (" + (sprite.getX()-camX) + ", " + (sprite.getY()-camY) + ")", sprite.getX()-camX, sprite.getY()-camY);                   
-        }
-
-        //Player location (center of Camera... Camera follows player)
-        g.setColor(Color.cyan);
-        g.fillRect(playerCamera.getX()-playerCamera.getWidth(), playerCamera.getY()-playerCamera.getWidth(), playerCamera.getWidth(), playerCamera.getHeight());
-
-        g.setColor(Color.white);
-        //World Sprite Location
-        g.drawString("World Sprite Location: (" + sprite.getX() + ", " + sprite.getY() + ")", sprite.getX(), sprite.getY());
-
-        //Cam Player Location
-        g.drawString("Cam Player Location: (" + (camW/2-playerCamera.getWidth()) + ", " + (camH/2-playerCamera.getHeight()) + ")", camW/2-playerCamera.getWidth(), camH/2-playerCamera.getHeight());
-       
-        
-        
-        if (animateFirstTime) {
-            gOld.drawImage(image, 0, 0, null);
-            return;
-        }
-
-Main.Draw(g, frame, player, value);
+      
     
         gOld.drawImage(image, 0, 0, null);
     }

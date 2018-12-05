@@ -18,7 +18,7 @@ public class Character {
     public void Move(){
         
     }
-    public void Draw(Graphics2D g, The_Escapists frame, int width, int height){
+    public void Draw(Graphics2D g, Camera frame, int width, int height){
         g.drawImage(image, xPos, yPos, width, height, frame);
     }
     public static void reset(){
