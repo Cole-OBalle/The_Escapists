@@ -27,6 +27,7 @@ public class The_Escapists extends JFrame implements Runnable {
     Image image;
     Graphics2D g;
     
+    
     int xpos;
     int ypos;
     int value = 1;
@@ -42,20 +43,20 @@ public class The_Escapists extends JFrame implements Runnable {
 
     static The_Escapists frame;
     public static void main(String[] args) {
-        frame = new The_Escapists();
-        frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+       runMe = new The_Escapists();
     }
 
     public The_Escapists() {
-        camX = xpos - Window.WINDOW_WIDTH / 2;
-        camY =xpos - Window.WINDOW_WIDTH / 2;
-        camW = Window.getWidth2();       
-        camH = Window.getHeight2();   
-        sprite = new Sprite(cam, 300, 300, 20, 20);
-        playerCamera = new PlayerCamera(cam, camW/2, camH/2, 25, 40);
-        world = new World(cam, 0, 0, 1000, 1000);
+         JFrame f = new JFrame("Camera Test");
+    Camera cam = new Camera(0, 0, 800, 800);
+        f.add(cam);
+        f.setSize(cam.getWidth(), cam.getHeight());    
+        f.setVisible(true);
+        f.setResizable(false);
+        f.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE ); 
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+        f.setLocation( (screensize.width - f.getWidth())/2,
+         (screensize.height - f.getHeight())/2-100 );
         addMouseListener(new MouseAdapter() {            
             public void mousePressed(MouseEvent e) {
                 
