@@ -43,6 +43,9 @@
                     break;
                 }    
         }
+
+    }
+
 //            if(value == 1){
 //                g.drawImage(FrontImage,xPos,yPos,50,100,frame);
 //            }
@@ -56,7 +59,7 @@
 //                g.drawImage(RightImage,xPos,yPos,50,100,frame);
 //            }
 
-    }
+
     
     public void changeX(int dir){
         xPos += dir;
@@ -66,4 +69,4 @@
     }
     
     
-}
+    }

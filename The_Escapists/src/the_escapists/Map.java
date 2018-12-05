@@ -10,10 +10,7 @@ import java.awt.*;
 public class Map {
     static int ydelta;
     static int xdelta;
-    static private Image Wall_Block;
-    static private Image Wall_Block1;
     static private Image Wall_Block2;
-    static private Image Wall_Block3;
     static private Image Wall_Block_Sideway;
     static private Image StoneImage;
     static private Image GrassBlock;
@@ -39,9 +36,9 @@ public class Map {
    {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},  
    {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
    {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
-   {GRASS,GRASS,GRASS,GRASS,STONE,STONE,GRASS,GRASS,GRASS,GRASS,GRASS},
-   {GRASS,GRASS,GRASS,GRASS,STONE,STONE,GRASS,GRASS,GRASS,GRASS,GRASS}, 
-   {GRASS,GRASS,GRASS,GRASS,DOOR,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
+   {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},
    {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS},  
    {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
    {GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS}, 
@@ -54,10 +51,8 @@ public class Map {
          ydelta = Window.getHeight2()/numRows;
          xdelta = Window.getWidth2()/numColumns;
 
-         Wall_Block = Toolkit.getDefaultToolkit().getImage("./Wall_Block.png");
-         Wall_Block1 = Toolkit.getDefaultToolkit().getImage("./Wall_Block1.png");
+
          Wall_Block2 = Toolkit.getDefaultToolkit().getImage("./Wall_Block2.png");
-         Wall_Block3 = Toolkit.getDefaultToolkit().getImage("./Wall_Block3.png");
          Wall_Block_Sideway = Toolkit.getDefaultToolkit().getImage("./Wall_Block_SideWay.png");
          GrassBlock =  Toolkit.getDefaultToolkit().getImage("./needGrassFixed.jpg");
          StoneImage =  Toolkit.getDefaultToolkit().getImage("./Stone.png");
