@@ -172,16 +172,42 @@ public class The_Escapists extends JFrame implements Runnable {
         g.setColor(Color.black);
         g.drawPolyline(x, y, 5);
         
-                //cam.paintComponent(gOld);
+        
+        
+        //cam is 500 x 500
+        g.setColor(Color.gray);
+        g.fillRect(camX, camY, camW, camH);     
+
+        //draw sprite at JPanel location if in camera sight
+        if (((sprite.getX()-camX) >= camX) && ((sprite.getX()-camX) <= (camX+camW)) && ((sprite.getY()-camY) >= camY) && ((sprite.getY()-camY) <= (camY+camH))) {
+            g.setColor(Color.green);
+            g.fillRect(sprite.getX()-camX, sprite.getY()-camY, 20, 20); 
+
+            //Cam Sprite Location
+            g.setColor(Color.white);
+            g.drawString("Camera Sprite Location: (" + (sprite.getX()-camX) + ", " + (sprite.getY()-camY) + ")", sprite.getX()-camX, sprite.getY()-camY);                   
+        }
+
+        //Player location (center of Camera... Camera follows player)
+        g.setColor(Color.cyan);
+        g.fillRect(playerCamera.getX()-playerCamera.getWidth(), playerCamera.getY()-playerCamera.getWidth(), playerCamera.getWidth(), playerCamera.getHeight());
+
+        g.setColor(Color.white);
+        //World Sprite Location
+        g.drawString("World Sprite Location: (" + sprite.getX() + ", " + sprite.getY() + ")", sprite.getX(), sprite.getY());
+
+        //Cam Player Location
+        g.drawString("Cam Player Location: (" + (camW/2-playerCamera.getWidth()) + ", " + (camH/2-playerCamera.getHeight()) + ")", camW/2-playerCamera.getWidth(), camH/2-playerCamera.getHeight());
+       
+        
         
         if (animateFirstTime) {
             gOld.drawImage(image, 0, 0, null);
             return;
         }
 
-       
-        
-        Main.Draw(g,this,player,value);
+Main.Draw(g, frame, player, value);
+    
         gOld.drawImage(image, 0, 0, null);
     }
 
