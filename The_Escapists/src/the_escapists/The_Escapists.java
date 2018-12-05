@@ -1,4 +1,6 @@
 
+
+
 package the_escapists;
 
 import java.awt.Color;
@@ -7,26 +9,35 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import javax.swing.JFrame;
 import java.io.File;
 import java.util.ArrayList;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+
 public class The_Escapists extends JFrame implements Runnable {
+        static The_Escapists runMe;
+    
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
     
-    static int camX;
-    static int camY; 
     int xpos;
     int ypos;
     int value = 1;
+    private static final long serialVersionUID = 1L;
+    private int camX, camY, camH, camW;
+    private Sprite sprite;
+    private PlayerCamera playerCamera;
+    private World world;
+    private Camera cam;
+    
     
     Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
 
@@ -39,7 +50,13 @@ public class The_Escapists extends JFrame implements Runnable {
     }
 
     public The_Escapists() {
-        
+        camX = xpos - Window.WINDOW_WIDTH / 2;
+        camY =xpos - Window.WINDOW_WIDTH / 2;
+        camW = Window.getWidth2();       
+        camH = Window.getHeight2();   
+        sprite = new Sprite(cam, 300, 300, 20, 20);
+        playerCamera = new PlayerCamera(cam, camW/2, camH/2, 25, 40);
+        world = new World(cam, 0, 0, 1000, 1000);
         addMouseListener(new MouseAdapter() {            
             public void mousePressed(MouseEvent e) {
                 
@@ -95,7 +112,7 @@ public class The_Escapists extends JFrame implements Runnable {
                     player.changeY(-10);
                 }
                else if (e.VK_S== e.getKeyCode()) {
-                   value =2;
+                   value = 2;
                     player.changeY(10);
                 }
                else if (e.VK_A ==e.getKeyCode()) {
@@ -105,6 +122,9 @@ public class The_Escapists extends JFrame implements Runnable {
                else if (e.VK_D== e.getKeyCode()) {
                    value = 4;
                     player.changeX(10);
+                }
+               else if (e.VK_ESCAPE== e.getKeyCode()) {
+                   System.exit(0);
                 }
                 if(e.getKeyCode() != e.VK_S && e.getKeyCode() != e.VK_W){
                     player.changeY(0);
@@ -152,54 +172,43 @@ public class The_Escapists extends JFrame implements Runnable {
 // draw border
         g.setColor(Color.black);
         g.drawPolyline(x, y, 5);
+        
+        
+        
+        //cam is 500 x 500
+        g.setColor(Color.gray);
+        g.fillRect(camX, camY, camW, camH);     
 
+        //draw sprite at JPanel location if in camera sight
+        if (((sprite.getX()-camX) >= camX) && ((sprite.getX()-camX) <= (camX+camW)) && ((sprite.getY()-camY) >= camY) && ((sprite.getY()-camY) <= (camY+camH))) {
+            g.setColor(Color.green);
+            g.fillRect(sprite.getX()-camX, sprite.getY()-camY, 20, 20); 
+
+            //Cam Sprite Location
+            g.setColor(Color.white);
+            g.drawString("Camera Sprite Location: (" + (sprite.getX()-camX) + ", " + (sprite.getY()-camY) + ")", sprite.getX()-camX, sprite.getY()-camY);                   
+        }
+
+        //Player location (center of Camera... Camera follows player)
+        g.setColor(Color.cyan);
+        g.fillRect(playerCamera.getX()-playerCamera.getWidth(), playerCamera.getY()-playerCamera.getWidth(), playerCamera.getWidth(), playerCamera.getHeight());
+
+        g.setColor(Color.white);
+        //World Sprite Location
+        g.drawString("World Sprite Location: (" + sprite.getX() + ", " + sprite.getY() + ")", sprite.getX(), sprite.getY());
+
+        //Cam Player Location
+        g.drawString("Cam Player Location: (" + (camW/2-playerCamera.getWidth()) + ", " + (camH/2-playerCamera.getHeight()) + ")", camW/2-playerCamera.getWidth(), camH/2-playerCamera.getHeight());
+       
+        
+        
         if (animateFirstTime) {
             gOld.drawImage(image, 0, 0, null);
             return;
         }
 
-        
-        g.setColor(Color.gray);
-//horizontal lines
-        for (int zi=1;zi<Map.numRows;zi++)
-        {
-            g.drawLine(Window.getX(0) ,Window.getY(0)+zi*Window.getHeight2()/Map.numRows ,
-            Window.getX(Window.getWidth2()) ,Window.getY(0)+zi*Window.getHeight2()/Map.numRows );
-        }
-//vertical lines
-        for (int zi=1;zi<Map.numColumns;zi++)
-        {
-            g.drawLine(Window.getX(0)+zi*Window.getWidth2()/Map.numColumns ,Window.getY(0) ,
-            Window.getX(0)+zi*Window.getWidth2()/Map.numColumns,Window.getY(Window.getHeight2())  );
-        }
-        
-//Display the objects of the board
-    int ydelta = Window.getHeight2()/Map.numRows;
-    int xdelta = Window.getWidth2()/Map.numColumns;
-        for (int zrow=0;zrow<Map.numRows;zrow++)
-        {
-            for (int zcolumn=0;zcolumn<Map.numColumns;zcolumn++)
-            {
-                if (Map.board[zrow][zcolumn] == Map.WALL)
-                {
-//                    g.setColor(Color.black);
-//                    g.fillRect(Window.getX(0)+zcolumn*xdelta,
-//                    Window.getY(0)+zrow*ydelta,
-//                    xdelta,
-//                    ydelta);
-                } 
-            }
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        Main.Draw(g,this,player,value);
+Main.Draw(g, frame, player, value);
+    
         gOld.drawImage(image, 0, 0, null);
     }
 
