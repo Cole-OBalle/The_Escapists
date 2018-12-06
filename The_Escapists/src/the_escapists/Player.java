@@ -44,6 +44,7 @@
         } 
     }
 }
+
     
     public void changeX(int dir){
         xPos += dir;
@@ -58,4 +59,4 @@
         return(yPos);
     }
     
-}
+    }
