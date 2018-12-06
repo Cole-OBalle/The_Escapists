@@ -29,21 +29,22 @@
 
     public void CharacterDir(int value,Graphics2D g,The_Escapists frame){
         switch(value){
-        case 1: {
-                g.drawImage(FrontImage,xPos,yPos,55,75,frame);
-                break;
-        }case 2:{
-                g.drawImage(BackImage,xPos,yPos,50,75,frame);
-                break;
-        }case 3:{
-                g.drawImage(LeftImage,xPos,yPos,50,80,frame);
-                break;
-        }case 4:{ 
-                g.drawImage(RightImage,xPos,yPos,50,75,frame);
-                break;
-        } 
+                case 1: {
+                    g.drawImage(FrontImage,xPos,yPos,50,100,frame);
+                    break;
+                }case 2:{
+                    g.drawImage(BackImage,xPos,yPos,50,100,frame);
+                    break;
+                }case 3:{
+                    g.drawImage(LeftImage,xPos,yPos,50,100,frame);
+                    break;
+                }case 4:{ 
+                    g.drawImage(RightImage,xPos,yPos,50,100,frame);
+                    break;
+                }    
+        }
+
     }
-}
 
     
     public void changeX(int dir){
@@ -116,6 +117,5 @@
             return(yPos);
         }
     
-}
+    }
     
-
