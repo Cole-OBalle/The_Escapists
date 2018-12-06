@@ -35,18 +35,18 @@ public class The_Escapists extends JFrame implements Runnable {
     private int camX, camY, camH, camW;
    
     
+    World world = new World(0,0,10000,10000);
     
     Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
-
     static The_Escapists frame;
     public static void main(String[] args) {
-        frame = new The_Escapists();
+        frame = new The_Escapists("Escapists");
         frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
-    public The_Escapists() {
+    public The_Escapists(String string) {
        
         addMouseListener(new MouseAdapter() {            
             public void mousePressed(MouseEvent e) {
@@ -165,13 +165,13 @@ public class The_Escapists extends JFrame implements Runnable {
         g.drawPolyline(x, y, 5);
         
        
-        
-        
         if (animateFirstTime) {
             gOld.drawImage(image, 0, 0, null);
             return;
         }
-
+        world.UpdateWindow();
+        
+        
         Main.Draw(g, frame, player, value);
     
         gOld.drawImage(image, 0, 0, null);

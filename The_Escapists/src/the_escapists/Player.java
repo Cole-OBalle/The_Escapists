@@ -20,9 +20,8 @@
     }
     Player(Image _image){
         image = _image;
-        System.out.println(Window.getWidth2());
-        xPos = Window.getWidth2();
-        yPos = Window.getHeight2();
+        xPos = Window.WINDOW_WIDTH/2;
+        yPos = Window.WINDOW_HEIGHT/2;
     }
     public void animate(){
         Move();
@@ -44,19 +43,6 @@
                 break;
         } 
     }
-//            if(value == 1){
-//                g.drawImage(FrontImage,xPos,yPos,50,100,frame);
-//            }
-//            else if(value == 2){
-//                g.drawImage(BackImage,xPos,yPos,50,100,frame);
-//            }
-//            else if(value == 3){
-//                g.drawImage(LeftImage,xPos,yPos,50,100,frame);
-//            }
-//            else if(value == 4){
-//                g.drawImage(RightImage,xPos,yPos,50,100,frame);
-//            }
-
 }
     
     public void changeX(int dir){
@@ -65,6 +51,11 @@
     public void changeY(int dir){
         yPos += dir;
     }
-    
+    int getX(){
+        return(xPos);
+    }
+    int getY(){
+        return(yPos);
+    }
     
 }

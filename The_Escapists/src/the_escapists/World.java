@@ -4,30 +4,46 @@
  * and open the template in the editor.
  */
 package the_escapists;
-
+import java.awt.*;
 public class World {
-    private int x, y, w, h;
-
+    
+    private static int CameraX;
+    private static int CameraY;
+    private static int x, y, w, h;
+    Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
     public World(int _x, int _y, int _w, int _h) {               
         x = _x;
         y = _y;
         w = _w;
         h = _h;
+        CameraX = player.getX();
+        CameraY = player.getY();
     }
 
-    public int getX() {
+    public void UpdateWindow(){
+        CameraX = player.getX();
+        CameraY = player.getY();
+        
+        System.out.println(CameraX + " "  + CameraY);
+        
+        
+        
+        
+    }
+    
+    public static int getX() {
         return x;
     }
 
-    public int getY() {
+    public static int getY() {
         return y;  
     }
 
-    public int getWidth() {
+    public static int getWidth() {
         return w;
     }
 
-    public int getHeight() {
+    public static int getHeight() {
         return h;
     }
 }
