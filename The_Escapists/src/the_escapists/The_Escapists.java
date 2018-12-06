@@ -1,6 +1,5 @@
 
 
-
 package the_escapists;
 
 import java.awt.Color;
@@ -257,4 +256,3 @@ Main.Draw(g, frame, player, value);
         relaxer = null;
     }
 }
-

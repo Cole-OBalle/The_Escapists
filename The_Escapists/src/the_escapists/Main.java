@@ -8,7 +8,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Main {
-
     public static void Draw(Graphics2D g,The_Escapists frame,Player player,int value){
         Map.draw(g, frame);
         player.Draw(g, frame,50,100);

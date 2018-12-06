@@ -50,6 +50,7 @@ public class Map {
          ydelta = Window.getHeight2()/numRows;
          xdelta = Window.getWidth2()/numColumns;
          GrassBlock =  Toolkit.getDefaultToolkit().getImage("./needGrassFixed.jpg");
+         //GrassBlock =  Toolkit.getDefaultToolkit().getImage("./YEE.png");
          StoneImage =  Toolkit.getDefaultToolkit().getImage("./Stone.png");
          DoorBlock =  Toolkit.getDefaultToolkit().getImage("./Door.png");
     }
