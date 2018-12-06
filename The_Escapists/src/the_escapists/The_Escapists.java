@@ -205,8 +205,8 @@ public class The_Escapists extends JFrame implements Runnable {
             gOld.drawImage(image, 0, 0, null);
             return;
         }
-
-Main.Draw(g, frame, player, value);
+               
+        Main.Draw(g, frame, player, value);
     
         gOld.drawImage(image, 0, 0, null);
     }

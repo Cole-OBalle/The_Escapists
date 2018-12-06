@@ -59,11 +59,67 @@
 }
     
     public void changeX(int dir){
-        xPos += dir;
+        if(!checkCollide(Map.board, dir, 0)){
+            xPos += dir;
+        }    
     }
     public void changeY(int dir){
-        yPos += dir;
+        if(!checkCollide(Map.board, 0, dir)){
+            yPos += dir;
+        }
+        
     }
-    
+    public boolean checkCollide(int[][] board, int xdir, int ydir){
+        int xdelta = Window.getWidth2()/Map.numColumns;
+        int ydelta = Window.getHeight2()/Map.numRows;
+        int currentXVal = 0;
+        int currentYVal = 0;
+        
+        int topRightCornerRow = 0;
+        int topRightCornerCol = 0;
+        
+        int topLeftCornerRow = 0;
+        int topLeftCornerCol = 0;
+        
+        int bottomRightCornerRow = 0;
+        int bottomRightCornerCol = 0;
+        
+        int bottomLeftCornerRow = 0;
+        int bottomLeftCornerCol = 0;
+        
+        while(currentYVal*ydelta < yPos + ydir){
+            currentYVal ++;
+            topRightCornerRow ++;
+            topLeftCornerRow ++;
+        }
+        currentYVal = 0;
+        
+       while(currentXVal*xdelta < xPos-45 + xdir){
+            currentXVal ++;
+            topRightCornerCol ++;
+            bottomRightCornerCol++;
+        }
+        currentXVal = 0;
+        
+        while(currentYVal*ydelta < yPos + 10 + ydir){
+            currentYVal ++;
+            bottomRightCornerRow ++;
+            bottomLeftCornerRow ++;
+        }
+        currentYVal = 0;
+        
+       while(currentXVal*xdelta < xPos - 17 + xdir){
+            currentXVal ++;
+            topLeftCornerCol ++;
+            bottomLeftCornerCol++;
+        }
+        currentXVal = 0;
+        
+        if(board[topRightCornerRow][topRightCornerCol] == Map.WALL_ || board[topLeftCornerRow][topLeftCornerCol] == Map.WALL_ ||board[bottomRightCornerRow][bottomRightCornerCol] == Map.WALL_ ||board[bottomLeftCornerRow][bottomLeftCornerCol] == Map.WALL_){
+            return(true);
+        }else{
+            return false;
+        }
+    }
     
 }
