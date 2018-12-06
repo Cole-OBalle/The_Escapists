@@ -12,8 +12,8 @@ public class Character {
     protected int yPos;
     protected static Image image;
     Character(){
-         xPos = 100;
-         yPos = 100;
+         xPos = Window.getX(200);
+         yPos = Window.getY(200);
     }
     public void Move(){
         

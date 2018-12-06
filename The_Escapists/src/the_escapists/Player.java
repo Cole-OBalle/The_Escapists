@@ -20,8 +20,8 @@
     }
     Player(Image _image){
         image = _image;
-        xPos = Window.getWidth2();
-        yPos = Window.getHeight2();
+        xPos = Window.getX(200);
+        yPos = Window.getY(200);
     }
     public void animate(){
         Move();
@@ -59,17 +59,17 @@
 }
     
     public void changeX(int dir){
-        if(!checkCollide(Map.board, dir, 0)){
+        if(!checkCollide(Map.board, dir, 0, Map.WALL_)){
             xPos += dir;
         }    
     }
     public void changeY(int dir){
-        if(!checkCollide(Map.board, 0, dir)){
+        if(!checkCollide(Map.board, 0, dir, Map.WALL_)){
             yPos += dir;
         }
         
     }
-    public boolean checkCollide(int[][] board, int xdir, int ydir){
+    public boolean checkCollide(int[][] board, int xdir, int ydir, int BOARD_TYPE){
         int xdelta = Window.getWidth2()/Map.numColumns;
         int ydelta = Window.getHeight2()/Map.numRows;
         int currentXVal = 0;
@@ -87,7 +87,7 @@
         int bottomLeftCornerRow = 0;
         int bottomLeftCornerCol = 0;
         
-        while(currentYVal*ydelta < yPos - 37 + ydir){
+        while(currentYVal*ydelta < yPos - 40 + ydir){
             currentYVal ++;
             topRightCornerRow ++;
             topLeftCornerRow ++;
@@ -115,7 +115,7 @@
         }
         currentXVal = 0;
         
-        if(board[topRightCornerRow][topRightCornerCol] == Map.WALL_ || board[topLeftCornerRow][topLeftCornerCol] == Map.WALL_ ||board[bottomRightCornerRow][bottomRightCornerCol] == Map.WALL_ ||board[bottomLeftCornerRow][bottomLeftCornerCol] == Map.WALL_){
+        if(board[topRightCornerRow][topRightCornerCol] == BOARD_TYPE || board[topLeftCornerRow][topLeftCornerCol] == BOARD_TYPE ||board[bottomRightCornerRow][bottomRightCornerCol] == BOARD_TYPE  ||board[bottomLeftCornerRow][bottomLeftCornerCol] == BOARD_TYPE){
             return(true);
         }else{
             return false;
