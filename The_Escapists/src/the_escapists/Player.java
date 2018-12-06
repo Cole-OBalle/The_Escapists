@@ -30,13 +30,13 @@
     public void CharacterDir(int value,Graphics2D g,Camera frame){
         switch(value){
         case 1: {
-                g.drawImage(FrontImage,xPos,yPos,50,100,frame);
+                g.drawImage(FrontImage,xPos,yPos,55,100,frame);
                 break;
         }case 2:{
                 g.drawImage(BackImage,xPos,yPos,50,100,frame);
                 break;
         }case 3:{
-                g.drawImage(LeftImage,xPos,yPos,50,100,frame);
+                g.drawImage(LeftImage,xPos,yPos,50,105,frame);
                 break;
         }case 4:{ 
                 g.drawImage(RightImage,xPos,yPos,50,100,frame);
