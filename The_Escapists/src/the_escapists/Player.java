@@ -20,8 +20,8 @@
     }
     Player(Image _image){
         image = _image;
-        xPos = Window.getWidth2();
-        yPos = Window.getHeight2();
+        xPos = Window.WINDOW_WIDTH/2;
+        yPos = Window.WINDOW_HEIGHT/2;
     }
     public void animate(){
         Move();
@@ -46,27 +46,76 @@
 
     }
 
-//            if(value == 1){
-//                g.drawImage(FrontImage,xPos,yPos,50,100,frame);
-//            }
-//            else if(value == 2){
-//                g.drawImage(BackImage,xPos,yPos,50,100,frame);
-//            }
-//            else if(value == 3){
-//                g.drawImage(LeftImage,xPos,yPos,50,100,frame);
-//            }
-//            else if(value == 4){
-//                g.drawImage(RightImage,xPos,yPos,50,100,frame);
-//            }
-
-
     
     public void changeX(int dir){
-        xPos += dir;
+        if(!checkCollide(Map.board, dir, 0)){
+            xPos += dir;
+        }    
     }
     public void changeY(int dir){
-        yPos += dir;
+        if(!checkCollide(Map.board, 0, dir)){
+            yPos += dir;
+        }
+        
+    }
+    public boolean checkCollide(int[][] board, int xdir, int ydir){
+        int xdelta = Window.getWidth2()/Map.numColumns;
+        int ydelta = Window.getHeight2()/Map.numRows;
+        int currentXVal = 0;
+        int currentYVal = 0;
+        
+        int topRightCornerRow = 0;
+        int topRightCornerCol = 0;
+        
+        int topLeftCornerRow = 0;
+        int topLeftCornerCol = 0;
+        
+        int bottomRightCornerRow = 0;
+        int bottomRightCornerCol = 0;
+        
+        int bottomLeftCornerRow = 0;
+        int bottomLeftCornerCol = 0;
+        
+        while(currentYVal*ydelta < yPos - 37 + ydir){
+            currentYVal ++;
+            topRightCornerRow ++;
+            topLeftCornerRow ++;
+        }
+        currentYVal = 0;
+        
+       while(currentXVal*xdelta < xPos-45 + xdir){
+            currentXVal ++;
+            topRightCornerCol ++;
+            bottomRightCornerCol++;
+        }
+        currentXVal = 0;
+        
+        while(currentYVal*ydelta < yPos + -15 + ydir){
+            currentYVal ++;
+            bottomRightCornerRow ++;
+            bottomLeftCornerRow ++;
+        }
+        currentYVal = 0;
+        
+       while(currentXVal*xdelta < xPos - 17 + xdir){
+            currentXVal ++;
+            topLeftCornerCol ++;
+            bottomLeftCornerCol++;
+        }
+        currentXVal = 0;
+        
+        if(board[topRightCornerRow][topRightCornerCol] == Map.WALL_ || board[topLeftCornerRow][topLeftCornerCol] == Map.WALL_ ||board[bottomRightCornerRow][bottomRightCornerCol] == Map.WALL_ ||board[bottomLeftCornerRow][bottomLeftCornerCol] == Map.WALL_){
+            return(true);
+        }else{
+            return false;
+        }
+    }
+        int getX(){
+            return(xPos);
+        }
+        int getY(){
+            return(yPos);
+        }
+    
     }
     
-    
-    }
