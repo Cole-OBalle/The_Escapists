@@ -20,6 +20,7 @@
     }
     Player(Image _image){
         image = _image;
+        System.out.println(Window.getWidth2());
         xPos = Window.getWidth2();
         yPos = Window.getHeight2();
     }
@@ -27,7 +28,7 @@
         Move();
     }
 
-    public void CharacterDir(int value,Graphics2D g,Camera frame){
+    public void CharacterDir(int value,Graphics2D g,The_Escapists frame){
         switch(value){
         case 1: {
                 g.drawImage(FrontImage,xPos,yPos,55,100,frame);

@@ -55,7 +55,7 @@ public class Map {
          DoorBlock =  Toolkit.getDefaultToolkit().getImage("./Door.png");
     }
     
-    public static void draw(Graphics2D g,Camera frame){
+    public static void draw(Graphics2D g,The_Escapists frame){
         
        for (int zrow=0;zrow<numRows;zrow++)
         {
@@ -85,7 +85,7 @@ public class Map {
             }
         }
     }
-    public static Image generateWall(Graphics2D g, Camera frame, int zrow, int zcolumn){
+    public static Image generateWall(Graphics2D g, The_Escapists frame, int zrow, int zcolumn){
         boolean wallNorth = false;
         boolean wallSouth = false;
         boolean wallEast = false;

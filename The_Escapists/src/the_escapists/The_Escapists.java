@@ -28,36 +28,26 @@ public class The_Escapists extends JFrame implements Runnable {
     Image image;
     Graphics2D g;
     
-    
     int xpos;
     int ypos;
     int value = 1;
     private static final long serialVersionUID = 1L;
     private int camX, camY, camH, camW;
-    private Sprite sprite;
-    private PlayerCamera playerCamera;
-    private World world;
-    private Camera cam;
+   
     
     
     Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
 
     static The_Escapists frame;
     public static void main(String[] args) {
-       runMe = new The_Escapists();
+        frame = new The_Escapists();
+        frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 
     public The_Escapists() {
-         JFrame f = new JFrame("Camera Test");
-    Camera cam = new Camera(0, 0, 800, 800);
-        f.add(cam);
-        f.setSize(cam.getWidth(), cam.getHeight());    
-        f.setVisible(true);
-        f.setResizable(false);
-        f.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE ); 
-        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-        f.setLocation( (screensize.width - f.getWidth())/2,
-         (screensize.height - f.getHeight())/2-100 );
+       
         addMouseListener(new MouseAdapter() {            
             public void mousePressed(MouseEvent e) {
                 
@@ -174,11 +164,15 @@ public class The_Escapists extends JFrame implements Runnable {
         g.setColor(Color.black);
         g.drawPolyline(x, y, 5);
         
+       
         
         
-     
+        if (animateFirstTime) {
+            gOld.drawImage(image, 0, 0, null);
+            return;
+        }
 
-      
+        Main.Draw(g, frame, player, value);
     
         gOld.drawImage(image, 0, 0, null);
     }
