@@ -30,16 +30,16 @@
     public void CharacterDir(int value,Graphics2D g,The_Escapists frame){
         switch(value){
         case 1: {
-                g.drawImage(FrontImage,xPos,yPos,55,100,frame);
+                g.drawImage(FrontImage,xPos,yPos,55,75,frame);
                 break;
         }case 2:{
-                g.drawImage(BackImage,xPos,yPos,50,100,frame);
+                g.drawImage(BackImage,xPos,yPos,50,75,frame);
                 break;
         }case 3:{
-                g.drawImage(LeftImage,xPos,yPos,50,105,frame);
+                g.drawImage(LeftImage,xPos,yPos,50,80,frame);
                 break;
         }case 4:{ 
-                g.drawImage(RightImage,xPos,yPos,50,100,frame);
+                g.drawImage(RightImage,xPos,yPos,50,75,frame);
                 break;
         } 
     }
@@ -87,7 +87,7 @@
         int bottomLeftCornerRow = 0;
         int bottomLeftCornerCol = 0;
         
-        while(currentYVal*ydelta < yPos + ydir){
+        while(currentYVal*ydelta < yPos - 37 + ydir){
             currentYVal ++;
             topRightCornerRow ++;
             topLeftCornerRow ++;
@@ -101,7 +101,7 @@
         }
         currentXVal = 0;
         
-        while(currentYVal*ydelta < yPos + 10 + ydir){
+        while(currentYVal*ydelta < yPos + -15 + ydir){
             currentYVal ++;
             bottomRightCornerRow ++;
             bottomLeftCornerRow ++;
