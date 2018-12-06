@@ -1,5 +1,6 @@
 
 
+
 package the_escapists;
 
 import java.awt.Color;
@@ -227,4 +228,3 @@ public class The_Escapists extends JFrame implements Runnable {
         relaxer = null;
     }
 }
-
