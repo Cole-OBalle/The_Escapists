@@ -6,6 +6,7 @@
 package the_escapists;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Map {
     static int ydelta;
@@ -25,24 +26,28 @@ public class Map {
     static final int PATH_ = 4;
     static final int STONE = 5;
     static final int DOOR_ = 6;
+//Door Arraylist Values    
+    public static ArrayList<Map> doors = new ArrayList<Map>();
+    private int doorColumn;
+    private int doorRow;
 
     public static int board[][] = {
    {WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_},
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_},
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,STONE,STONE,STONE,GRASS,GRASS,WALL_},  
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,STONE,STONE,STONE,STONE,STONE,STONE,STONE,WALL_},
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,STONE,WALL_,STONE,STONE,STONE,WALL_,STONE,WALL_}, 
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,STONE,STONE,STONE,STONE,STONE,STONE,STONE,STONE,WALL_}, 
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,STONE,STONE,STONE,STONE,WALL_,STONE,STONE,STONE,WALL_},   
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,STONE,STONE,WALL_,STONE,STONE,STONE,WALL_,STONE,WALL_},
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,STONE,WALL_,WALL_,STONE,WALL_,WALL_,STONE,WALL_}, 
-   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,STONE,STONE,WALL_,WALL_,WALL_,STONE,STONE,WALL_}, 
-   {WALL_,WALL_,DOOR_,WALL_,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,STONE,STONE,STONE,GRASS,GRASS,WALL_}, 
-   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_}, 
-   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_},  
-   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,WALL_,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_}, 
-   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_}, 
-   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,DOOR_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,GRASS,GRASS,GRASS,WALL_},  
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},  
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},   
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,DOOR_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,DOOR_,GRASS,GRASS,GRASS,WALL_},  
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_}, 
+   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,WALL_,WALL_,DOOR_,WALL_,WALL_,WALL_,WALL_,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},  
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},  
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},  
+   {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
    {WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_}
    }; 
     
@@ -50,13 +55,29 @@ public class Map {
     public static void reset(){
          ydelta = Window.getHeight2()/numRows;
          xdelta = Window.getWidth2()/numColumns;
-         GrassBlock =  Toolkit.getDefaultToolkit().getImage("./needGrassFixed.jpg");
+         GrassBlock =  Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/needGrassFixed.jpg");
          //GrassBlock =  Toolkit.getDefaultToolkit().getImage("./YEE.png");
-         StoneImage =  Toolkit.getDefaultToolkit().getImage("./Stone.png");
-         DoorClosed =  Toolkit.getDefaultToolkit().getImage("./Door.png");
-         DoorOpen = Toolkit.getDefaultToolkit().getImage("./Stone.png");
+         StoneImage =  Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/Stone.png");
+         DoorClosed =  Toolkit.getDefaultToolkit().getImage("./Assets/Doors/Door.png");
+         DoorOpen = Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/Stone.png");
+         setDoors();
     }
-    
+    private static void setDoors(){
+        for (int zrow=0;zrow<numRows;zrow++)
+        {
+            for (int zcolumn=0;zcolumn<numColumns;zcolumn++)
+            {
+                if(board[zrow][zcolumn] == Map.DOOR_){
+                    doors.add(new Map(zrow,zcolumn));
+                }
+                
+            }
+        }
+    }
+    Map(int zrow, int zcolumn){
+        doorRow = zrow;
+        doorColumn = zcolumn;
+    }
     public static void draw(Graphics2D g,The_Escapists frame, Player player){
         
        for (int zrow=0;zrow<numRows;zrow++)
@@ -83,7 +104,14 @@ public class Map {
                 }
                  else if(board[zrow][zcolumn] == DOOR_){
                     if(player.checkCollide(board, zrow, zcolumn, DOOR_)){
-                        g.drawImage(DoorOpen,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
+                        for(int i = 0; i<doors.size(); i++){
+                            if(doors.get(i).doorRow == zrow && doors.get(i).doorColumn == zcolumn){
+                                g.drawImage(DoorOpen,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
+                                break;
+                            }else{
+                                g.drawImage(DoorClosed,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
+                            }
+                        }                       
                     }else{
                         g.drawImage(DoorClosed,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
 
@@ -118,37 +146,37 @@ public class Map {
             }
         }
         if(wallNorth &&!wallSouth &&!wallEast &&!wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Down End.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Down End.png"));
         }else if(wallNorth && wallSouth &&!wallEast &&!wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Up.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Up.png"));
         }else if(wallNorth && wallSouth && wallEast &&!wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall T Junction Right.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall T Junction Right.png"));
         }else if(wallNorth && wallSouth && wallEast && wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall 4 Junction.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall 4 Junction.png"));
         }else if(!wallNorth && wallSouth && wallEast && wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall T Junction Down.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall T Junction Down.png"));
         }else if(wallNorth && !wallSouth && wallEast && wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall T Junction Up.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall T Junction Up.png"));
         }else if(wallNorth && wallSouth &&!wallEast && wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall T Junction Left.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall T Junction Left.png"));
         }else if(!wallNorth && wallSouth &&!wallEast &&!wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Up End.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Up End.png"));
         }else if(!wallNorth && !wallSouth && wallEast &&!wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Straight End Left.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Straight End Left.png"));
         }else if(!wallNorth && !wallSouth && !wallEast && wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Straight End Right.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Straight End Right.png"));
         }else if(wallNorth && !wallSouth && wallEast &&!wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Corner Left Down.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Corner Left Down.png"));
         }else if(wallNorth && !wallSouth &&!wallEast &&wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Corner Right Down.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Corner Right Down.png"));
         }else if(!wallNorth && wallSouth && wallEast &&!wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Corner Left Up.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Corner Left Up.png"));
         }else if(!wallNorth && wallSouth &&!wallEast && wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Corner Right Up.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Corner Right Up.png"));
         }else if(!wallNorth && !wallSouth && wallEast && wallWest){
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Straight.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Straight.png"));
         }else{
-            return(Toolkit.getDefaultToolkit().getImage("./Walls/Wall Stand Alone.png"));
+            return(Toolkit.getDefaultToolkit().getImage("./Assets/Walls/Wall Stand Alone.png"));
         }
                 
         

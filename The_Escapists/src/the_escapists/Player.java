@@ -13,10 +13,10 @@
         static private Image RightImage;
     
     public static void reset(){
-        FrontImage = Toolkit.getDefaultToolkit().getImage("./Player_Up.png");
-        BackImage = Toolkit.getDefaultToolkit().getImage("./Player_Down.png");
-        LeftImage = Toolkit.getDefaultToolkit().getImage("./Player_Left.png");
-        RightImage = Toolkit.getDefaultToolkit().getImage("./Player_Right.png");
+        FrontImage = Toolkit.getDefaultToolkit().getImage("./Assets/Characters/Player_Up.png");
+        BackImage = Toolkit.getDefaultToolkit().getImage("./Assets/Characters/Player_Down.png");
+        LeftImage = Toolkit.getDefaultToolkit().getImage("./Assets/Characters/Player_Left.png");
+        RightImage = Toolkit.getDefaultToolkit().getImage("./Assets/Characters/Player_Right.png");
     }
     Player(Image _image){
         image = _image;
