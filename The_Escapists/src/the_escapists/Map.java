@@ -26,12 +26,7 @@ public class Map {
     static final int PATH_ = 4;
     static final int STONE = 5;
 //Door Arraylist Values    
-    static enum DoorType{
-        NORMAL,STAFF,LOCKED,JANITOR,MECHANIC,PLUMBER,LAUNDRY,MAILMAN
-    }
-    public static ArrayList<Map> doors = new ArrayList<Map>();
-    private int doorColumn;
-    private int doorRow;
+    public static ArrayList<Door> doors = new ArrayList<Door>();
 
     public static int board[][] = {
    {WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_},
@@ -62,12 +57,10 @@ public class Map {
          StoneImage =  Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/Stone.png");
          DoorClosed =  Toolkit.getDefaultToolkit().getImage("./Assets/Doors/Door.png");
          DoorOpen = Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/Stone.png");
+         doors.add(new Door(8,4,Door.DoorType.NORMAL));
+         doors.add(new Door(8,12,Door.DoorType.NORMAL));
     }
 
-    Map(int zrow, int zcolumn){
-        doorRow = zrow;
-        doorColumn = zcolumn;
-    }
     public static void draw(Graphics2D g,The_Escapists frame, Player player){
         
        for (int zrow=0;zrow<numRows;zrow++)
@@ -92,7 +85,13 @@ public class Map {
                  else if(board[zrow][zcolumn] == STONE){
                     g.drawImage(StoneImage,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
                 }
-                
+                for (int i = 0; i<doors.size();i++){
+                    System.out.println(zrow + " " + zcolumn + "    " + doors.get(i).getRow() + " " + doors.get(i).getColumn());
+                    if(zrow == doors.get(i).getRow() && zcolumn == doors.get(i).getColumn()){
+                        System.out.println("Doors Generating");
+                        g.drawImage(doors.get(i).getImage(),Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
+                    }
+                }                
             }
         }
     }
