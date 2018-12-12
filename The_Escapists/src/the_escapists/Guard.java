@@ -5,10 +5,6 @@
  */
 package the_escapists;
 
-/**
- *
- * @author cole0
- */
 public class Guard {
     
 }
