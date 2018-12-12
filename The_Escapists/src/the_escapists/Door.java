@@ -22,6 +22,13 @@ public class Door {
         type = _type;
         state = Toolkit.getDefaultToolkit().getImage("./Assets/Doors/Door.png");
     }
+    public void changeState(boolean open){
+        if(open){
+            state = Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/One_Stone.png");
+        }else{
+            state = Toolkit.getDefaultToolkit().getImage("./Assets/Doors/Door.png");
+        }
+    }
     public int getRow(){
         return row;
     }

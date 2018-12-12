@@ -59,6 +59,7 @@ public class Map {
          DoorOpen = Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/Stone.png");
          doors.add(new Door(8,4,Door.DoorType.NORMAL));
          doors.add(new Door(8,12,Door.DoorType.NORMAL));
+         doors.add(new Door(10,8,Door.DoorType.LOCKED));
     }
 
     public static void draw(Graphics2D g,The_Escapists frame, Player player){
