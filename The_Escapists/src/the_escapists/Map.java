@@ -87,9 +87,7 @@ public class Map {
                     g.drawImage(StoneImage,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
                 }
                 for (int i = 0; i<doors.size();i++){
-                    System.out.println(zrow + " " + zcolumn + "    " + doors.get(i).getRow() + " " + doors.get(i).getColumn());
                     if(zrow == doors.get(i).getRow() && zcolumn == doors.get(i).getColumn()){
-                        System.out.println("Doors Generating");
                         g.drawImage(doors.get(i).getImage(),Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
                     }
                 }                
