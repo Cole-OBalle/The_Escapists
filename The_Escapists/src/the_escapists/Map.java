@@ -25,25 +25,22 @@ public class Map {
     static final int _END_ = 3;
     static final int PATH_ = 4;
     static final int STONE = 5;
-    static final int DOOR_ = 6;
+    static final int DOOR_ = 5;
 //Door Arraylist Values    
-    public static ArrayList<Map> doors = new ArrayList<Map>();
-    static int doorz;
-    private int doorColumn;
-    private int doorRow;
+    public static ArrayList<Door> doors = new ArrayList<Door>();
 
     public static int board[][] = {
    {WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_},
-   {WALL_,GRASS,GRASS,GRASS,DOOR_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
    {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,WALL_,GRASS,GRASS,GRASS,WALL_},  
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},  
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},   
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
-   {WALL_,GRASS,GRASS,GRASS,DOOR_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,DOOR_,GRASS,GRASS,GRASS,WALL_},  
+   {WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_},  
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_}, 
-   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,WALL_,WALL_,DOOR_,WALL_,WALL_,WALL_,WALL_,GRASS,GRASS,GRASS,WALL_},
+   {WALL_,GRASS,GRASS,GRASS,WALL_,WALL_,WALL_,WALL_,DOOR_,DOOR_,WALL_,WALL_,WALL_,GRASS,GRASS,GRASS,WALL_},
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},  
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},  
    {WALL_,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,GRASS,WALL_,GRASS,GRASS,GRASS,WALL_},
@@ -66,25 +63,12 @@ public class Map {
          StoneImage =  Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/Stone.png");
          DoorClosed =  Toolkit.getDefaultToolkit().getImage("./Assets/Doors/Door.png");
          DoorOpen = Toolkit.getDefaultToolkit().getImage("./Assets/Terrain/Stone.png");
-         setDoors();
+         doors.add(new Door(8,4,Door.DoorType.NORMAL));
+         doors.add(new Door(8,12,Door.DoorType.NORMAL));
+         doors.add(new Door(10,8,Door.DoorType.NORMAL));
+         doors.add(new Door(10,9,Door.DoorType.NORMAL));
     }
-    private static void setDoors(){
-        for (int zrow=0;zrow<numRows;zrow++)
-        {
-            for (int zcolumn=0;zcolumn<numColumns;zcolumn++)
-            {
-                if(board[zrow][zcolumn] == Map.DOOR_){
-                    doors.add(new Map(zrow,zcolumn));
-                }
-                
-            }
-        }
-    }
-    Map(int zrow, int zcolumn){
-        doorRow = zrow;
-        doorColumn = zcolumn;
-        doorz++;
-    }
+
     public static void draw(Graphics2D g,The_Escapists frame, Player player){
         
        for (int zrow=0;zrow<numRows;zrow++)
@@ -109,21 +93,11 @@ public class Map {
                  else if(board[zrow][zcolumn] == STONE){
                     g.drawImage(StoneImage,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
                 }
-                 else if(board[zrow][zcolumn] == DOOR_){
-                    if(player.checkCollide(board, zrow, zcolumn, DOOR_)){
-                        for(int i = 0; i<doors.size(); i++){
-                            if(doors.get(i).doorRow == zrow && doors.get(i).doorColumn == zcolumn){
-                                g.drawImage(DoorOpen,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
-                                break;
-                            }else{
-                                g.drawImage(DoorClosed,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
-                            }
-                        }                       
-                    }else{
-                        g.drawImage(DoorClosed,Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
-
+                for (int i = 0; i<doors.size();i++){
+                    if(zrow == doors.get(i).getRow() && zcolumn == doors.get(i).getColumn()){
+                        g.drawImage(doors.get(i).getImage(),Window.getX(zcolumn*xdelta),Window.getY(zrow*ydelta),xdelta,ydelta,frame);
                     }
-                                    }
+                }                
             }
         }
     }

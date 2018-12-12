@@ -6,6 +6,7 @@
     package the_escapists;
     import java.awt.Image;
     import java.awt.*;
+    import java.util.ArrayList;
     public class Player extends Character {
         static private Image FrontImage;
         static private Image BackImage;
@@ -48,12 +49,12 @@
 
     
     public void changeX(int dir){
-        if(!checkCollide(Map.board, dir, 0, Map.WALL_)){
+        if(!checkCollide(Map.board, dir, 0, Map.WALL_) && goThroughDoor(dir,0)){
             xPos += dir;
         }    
     }
     public void changeY(int dir){
-        if(!checkCollide(Map.board, 0, dir, Map.WALL_)){
+        if(!checkCollide(Map.board, 0, dir, Map.WALL_) && goThroughDoor( 0, dir)){
             yPos += dir;
         }
         
@@ -116,6 +117,76 @@
         int getY(){
             return(yPos);
         }
-    
+    public boolean goThroughDoor(int xdir, int ydir){
+        int xdelta = Window.getWidth2()/Map.numColumns;
+        int ydelta = Window.getHeight2()/Map.numRows;
+        
+        int currentXVal = 0;
+        int currentYVal = 0;
+        
+        int topRightCornerRow = 0;
+        int topRightCornerCol = 0;
+        
+        int topLeftCornerRow = 0;
+        int topLeftCornerCol = 0;
+        
+        int bottomRightCornerRow = 0;
+        int bottomRightCornerCol = 0;
+        
+        int bottomLeftCornerRow = 0;
+        int bottomLeftCornerCol = 0;
+        
+        while(currentYVal*ydelta < yPos - 40 + ydir){
+            currentYVal ++;
+            topRightCornerRow ++;
+            topLeftCornerRow ++;
+        }
+        currentYVal = 0;
+        
+       while(currentXVal*xdelta < xPos-45 + xdir){
+            currentXVal ++;
+            topRightCornerCol ++;
+            bottomRightCornerCol++;
+        }
+        currentXVal = 0;
+        
+        while(currentYVal*ydelta < yPos + -15 + ydir){
+            currentYVal ++;
+            bottomRightCornerRow ++;
+            bottomLeftCornerRow ++;
+        }
+        currentYVal = 0;
+        
+       while(currentXVal*xdelta < xPos - 17 + xdir){
+            currentXVal ++;
+            topLeftCornerCol ++;
+            bottomLeftCornerCol++;
+        }
+        currentXVal = 0;
+        
+        for(int i = 0; i<Map.doors.size(); i++){
+            if((Map.doors.get(i).getRow() == topRightCornerRow ||
+               Map.doors.get(i).getRow() == bottomRightCornerRow ||     
+               Map.doors.get(i).getRow() == topLeftCornerRow ||     
+               Map.doors.get(i).getRow() == bottomLeftCornerRow) &&
+              (Map.doors.get(i).getColumn() == topRightCornerCol ||
+               Map.doors.get(i).getColumn() == bottomRightCornerCol ||     
+               Map.doors.get(i).getColumn() == topLeftCornerCol ||     
+               Map.doors.get(i).getColumn() == bottomLeftCornerCol))
+            {
+                if(Map.doors.get(i).getType() == Door.DoorType.NORMAL){
+                    Map.doors.get(i).changeState(true);
+                    return(true);
+                }else{
+                    return false;
+                }
+            }
+            else{
+                Map.doors.get(i).changeState(false);
+            }
+        }
+        
+        return true;
+    }
     }
     
