@@ -12,9 +12,9 @@ public class Main {
         if(!Menu.getStart()){
             Menu.Draw(g, frame);
         }else{
-            Map.draw(g, frame, player);
             player.Draw(g, frame,50,100);
             player.CharacterDir(value, g, frame);
+            Map.draw(g, frame, player);
         }
         
     }
@@ -22,6 +22,7 @@ public class Main {
         Map.reset();
         Character.reset();
         Player.reset();
+        Menu.reset();
     }
     public static void Animate(Player player){
         player.animate();
