@@ -7,15 +7,27 @@ package the_escapists;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 public class Menu {
-    private static Image jokeTitleScreen = Toolkit.getDefaultToolkit().getImage("./Assets/Title Screens/Joke Title Screen.png");
-    private static Image titleScreen = Toolkit.getDefaultToolkit().getImage("./Assets/Title Screens/Title Screen.jpg");
     private static boolean start = false;
-    public static void Draw(Graphics2D g, The_Escapists frame){
-        g.drawImage(titleScreen, -350, 0, 1623,Window.getHeight2(), frame);
+    private static Menu currentMenu;
+    private Image image;
+    private ArrayList<Button> buttons = new ArrayList<Button>();
+    Menu(Image _image){
+        image = _image;
     }
-    public static void reset(){
+    public static void Draw(Graphics2D g, The_Escapists frame){
+        g.drawImage(currentMenu.image, -350, 0, 1623,Window.getHeight2(), frame);
+        for(Button button : currentMenu.buttons){
+            g.drawImage(button.getNormal(),button.getX(),button.getY(),frame);
+        }
+    }
+    public static void reset(Menu startMenu){
         start = false;
+        currentMenu = startMenu;
+    }
+    public void addButton(Image normal, Image selected, int _xPos, int _yPos){
+        buttons.add(new Button(normal, selected, _xPos, _yPos));
     }
     public static boolean getStart(){
         return start;

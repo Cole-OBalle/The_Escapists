@@ -18,11 +18,13 @@ public class Main {
         }
         
     }
-    public static void reset(Player player){
+    public static void reset(Player player, Menu startMenu){
         Map.reset();
         Character.reset();
         Player.reset();
-        Menu.reset();
+        Menu.reset(startMenu);
+        startMenu.addButton(Toolkit.getDefaultToolkit().getImage("./Assets/Buttons/Start Button.png"), Toolkit.getDefaultToolkit().getImage("./Assets/Buttons/Start Button Selected.png"), 150, 800);
+        
     }
     public static void Animate(Player player){
         player.animate();

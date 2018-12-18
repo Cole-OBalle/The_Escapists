@@ -39,6 +39,8 @@ public class The_Escapists extends JFrame implements Runnable {
     
     
     Player player = new Player(Toolkit.getDefaultToolkit().getImage("./Player Face Down.png"));
+    
+    Menu startMenu = new Menu(Toolkit.getDefaultToolkit().getImage("./Assets/Title Screens/Title Screen.jpg"));
 
     static The_Escapists frame;
     public static void main(String[] args) {
@@ -227,7 +229,7 @@ public class The_Escapists extends JFrame implements Runnable {
     }
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
-        Main.reset(player);
+        Main.reset(player,startMenu);
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
