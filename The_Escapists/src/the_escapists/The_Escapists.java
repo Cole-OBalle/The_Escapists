@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.MouseInfo;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -229,6 +230,8 @@ public class The_Escapists extends JFrame implements Runnable {
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
         Main.reset(player,startMenu);
+        xpos = MouseInfo.getPointerInfo().getLocation().x;
+        ypos = MouseInfo.getPointerInfo().getLocation().y;
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
@@ -240,7 +243,11 @@ public class The_Escapists extends JFrame implements Runnable {
             }
             reset();
         }
-        
+        xpos = MouseInfo.getPointerInfo().getLocation().x;
+        ypos = MouseInfo.getPointerInfo().getLocation().y;
+        for(Button startMenuButton : startMenu.getButtons()){
+            startMenuButton.hoverOverButton(xpos, ypos);
+        }
     }
 
 ////////////////////////////////////////////////////////////////////////////

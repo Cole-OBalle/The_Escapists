@@ -28,6 +28,13 @@ public class Button {
         }
         
     }
+    public boolean selectButton(int mouseX, int mouseY){
+        if(mouseX >= xPos && mouseX <= xPos + 209 && mouseY >= yPos && mouseY <= yPos + 101){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public Image getNormal(){
         return(imageNormal);
     }

@@ -32,4 +32,7 @@ public class Menu {
     public static boolean getStart(){
         return start;
     }
+    public ArrayList<Button> getButtons(){
+        return buttons;
+    }
 }
