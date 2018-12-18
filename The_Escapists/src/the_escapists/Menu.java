@@ -19,7 +19,7 @@ public class Menu {
     public static void Draw(Graphics2D g, The_Escapists frame){
         g.drawImage(currentMenu.image, -350, 0, 1623,Window.getHeight2(), frame);
         for(Button button : currentMenu.buttons){
-            g.drawImage(button.getNormal(),button.getX(),button.getY(),frame);
+            g.drawImage(button.getCurrentState(),button.getX(),button.getY(),frame);
         }
     }
     public static void reset(Menu startMenu){

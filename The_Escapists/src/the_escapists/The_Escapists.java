@@ -60,13 +60,12 @@ public class The_Escapists extends JFrame implements Runnable {
         world = new World(cam, 0, 0, 1000, 1000);
         addMouseListener(new MouseAdapter() {            
             public void mousePressed(MouseEvent e) {
-                
+                xpos = e.getX();
+                ypos = e.getY();    
                 if (e.BUTTON1 == e.getButton()) {
                     //left button
 
-// location of the cursor.
-                    xpos = e.getX();
-                    ypos = e.getY();                                        
+// location of the cursor.                                    
                     camX = xpos - Window.WINDOW_WIDTH / 2;
                     camY = ypos - Window.WINDOW_HEIGHT / 2;
                     
@@ -241,6 +240,7 @@ public class The_Escapists extends JFrame implements Runnable {
             }
             reset();
         }
+        
     }
 
 ////////////////////////////////////////////////////////////////////////////

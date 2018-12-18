@@ -8,16 +8,26 @@ package the_escapists;
 public class Button {
     private Image imageNormal;
     private Image imageSelected;
+    private Image currentState;
     private int xPos;
     private int yPos;
     
     Button(Image _normal, Image _selected, int _xPos, int _yPos){
         imageNormal = _normal;
         imageSelected = _selected;
+        currentState = imageNormal;
         xPos = _xPos;
         yPos =_yPos;
     }
     
+    public void hoverOverButton(int mouseX, int mouseY){
+        if(mouseX >= xPos && mouseX <= xPos + 209 && mouseY >= yPos && mouseY <= yPos + 101){
+            currentState = imageSelected;
+        }else{
+            currentState = imageNormal;
+        }
+        
+    }
     public Image getNormal(){
         return(imageNormal);
     }
@@ -25,7 +35,9 @@ public class Button {
     public Image getSelected(){
         return imageSelected;
     }
-    
+    public Image getCurrentState(){
+        return currentState;
+    }
     public int getX(){
         return xPos;
     }
