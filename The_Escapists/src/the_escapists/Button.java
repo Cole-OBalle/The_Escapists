@@ -11,13 +11,18 @@ public class Button {
     private Image currentState;
     private int xPos;
     private int yPos;
+    private boolean clicked;
+    private int width;
+    private int height;    
     
-    Button(Image _normal, Image _selected, int _xPos, int _yPos){
+    Button(Image _normal, Image _selected, int _xPos, int _yPos, int _width, int _height){
         imageNormal = _normal;
         imageSelected = _selected;
         currentState = imageNormal;
         xPos = _xPos;
         yPos =_yPos;
+        width = _width;
+        height = _height;
     }
     
     public void hoverOverButton(int mouseX, int mouseY){
@@ -35,6 +40,9 @@ public class Button {
             return false;
         }
     }
+    public void clicked(boolean state){
+        clicked = state;
+    }
     public Image getNormal(){
         return(imageNormal);
     }
@@ -51,5 +59,11 @@ public class Button {
     
     public int getY(){
         return yPos;
+    }
+    public int getWidth(){
+        return width;
+    }
+    public int getHeight(){
+        return height;
     }
 }

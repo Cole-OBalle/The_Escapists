@@ -26,8 +26,14 @@ public class Menu {
         start = false;
         currentMenu = startMenu;
     }
-    public void addButton(Image normal, Image selected, int _xPos, int _yPos){
-        buttons.add(new Button(normal, selected, _xPos, _yPos));
+    public void addButton(Image normal, Image selected, int xPos, int yPos, int width, int height){
+        buttons.add(new Button(normal, selected, xPos, yPos, width, height));
+    }
+    public void buttonClicked(Button button, int mouseX, int mouseY){
+        if(mouseX >= button.getX() && mouseX <= button.getX() + button.getWidth() && mouseY >= button.getY() && mouseY <= button.getY()+button.getHeight())
+        {
+            button.clicked(true);
+        }
     }
     public static boolean getStart(){
         return start;

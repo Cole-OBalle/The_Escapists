@@ -23,7 +23,7 @@ public class Main {
         Character.reset();
         Player.reset();
         Menu.reset(startMenu);
-        startMenu.addButton(Toolkit.getDefaultToolkit().getImage("./Assets/Buttons/Start Button.png"), Toolkit.getDefaultToolkit().getImage("./Assets/Buttons/Start Button Selected.png"), 150, 800);
+        startMenu.addButton(Toolkit.getDefaultToolkit().getImage("./Assets/Buttons/Start Button.png"), Toolkit.getDefaultToolkit().getImage("./Assets/Buttons/Start Button Selected.png"), 150, 800, 209, 101);
         
     }
     public static void Animate(Player player){
